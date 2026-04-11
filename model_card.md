@@ -5,6 +5,7 @@
 Give your model a short, descriptive name.  
 Example: **VibeFinder 1.0**  
 
+Taste Tuner
 ---
 
 ## 2. Intended Use  
