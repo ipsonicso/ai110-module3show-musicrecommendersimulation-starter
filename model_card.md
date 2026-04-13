@@ -3,20 +3,36 @@
 ## 1. Model Name  
 
 Give your model a short, descriptive name.  
-Example: **VibeFinder 1.0**  
 
 Taste Tuner
+
 ---
 
 ## 2. Intended Use  
 
 Describe what your recommender is designed to do and who it is for. 
 
+goals before project
+
+> The model takes user input for their preferences to create a taste profile: 
+>   mood > genre > energy, (optional) BPM slider 
+> The model suggests the top 3-5 songs, ranked by relevance to that taste profile.
+
+
+>  It assumes the user prefers a matching mood above all 
+>   and that they want recency bias **
+>     EX: (listening to one genre recently has more weight than listening to another genre over the last few months)
+>   and that they don't want to only be recommended music by the same artist/the same song **
+
+> Allows user to input CSV of additional song info? **
+
+>  This limited model is for classroom exploration only. X   
+
 Prompts:  
 
-- What kind of recommendations does it generate  
-- What assumptions does it make about the user  
-- Is this for real users or classroom exploration  
+- What kind of recommendations does it generate     X
+- What assumptions does it make about the user      X
+- Is this for real users or classroom exploration   X
 
 ---
 
@@ -25,12 +41,19 @@ Prompts:
 Explain your scoring approach in simple language.  
 
 Prompts:  
-
 - What features of each song are used (genre, energy, mood, etc.)  
 - What user preferences are considered  
 - How does the model turn those into a score  
 - What changes did you make from the starter logic  
 
+> The model uses Mood, Genre, Energy, and BPM primarily (in that order) to  
+> Adding up to
+> score =
+>   (genre_match * 0.4) +           # Most important
+>   (mood_match * 0.3) +            # Very important
+>   (1 - |energy_distance| * 0.2) + # Continuous tuning
+>   (acoustic_match * 0.1)          # Tiebreaker
+> 
 Avoid code here. Pretend you are explaining the idea to a friend who does not program.
 
 ---
@@ -99,8 +122,14 @@ Prompts:
 - Improving diversity among the top results  
 - Handling more complex user tastes  
 
----
 
+> A potential future model expanded for real users would include a player or tracker (tied to the user's audio library/preferred music app) **
+>   to build up a user taste profile through likes/dislikes and skips
+>   A BPM range selecter or high/medium/low tempo option to select range
+>   build in profiles based on other factors (such as a workout recommender based on BPM or Mood playlist based on genres,artists user has already liked in that mood)
+>   
+
+---
 ## 9. Personal Reflection  
 
 A few sentences about your experience.  
